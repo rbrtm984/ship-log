@@ -1,4 +1,7 @@
 # waka-smith
 
-this app will render a graph to your browser that shows how much time you spent on vscode on a given day, or over the course of a given week
-it will use react, express, webpack, d3 and tailwind to do that
+this app requires you have the WakaTime extension installed on VSCode
+
+when you open this app and input the name of one of your projects in the input field
+the app will mamke 
+
