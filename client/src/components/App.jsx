@@ -5,7 +5,6 @@ import Header from './Header';
 const App = () => {
   return (
   <div>
-    <div>Hello from React!</div>
     <Header />
     <Data />
   </div>
