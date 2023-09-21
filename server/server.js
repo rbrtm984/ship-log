@@ -1,38 +1,58 @@
 const express = require('express');
-const path = require('path');
-const fetch = require('node-fetch');
 const app = express();
 const PORT = 3000;
-const API_KEY = 'waka_22add552-3237-46eb-82a8-3123add39032';
-const base64EncodedKey = Buffer.from(API_KEY).toString('base64');
-const ENDPOINT = 'https://wakatime.com/api/v1/users/current/summaries?start=today&end=today';
+const cors = require('cors');
+const { Project } = require('./models/Project.js')
 
+const wakatimeRoutes = require('./routes/api');
+
+// Middleware to allow cross-origin requests
+app.use(cors());
+
+// Middleware to parse JSON payloads from incoming requests
+app.use(express.json());
+
+// Serve the static frontend files from the 'client/dist' directory
 app.use(express.static('client/dist')); // Serve your frontend
 
-app.get('/api/wakatime', (req, res) => {
-    // send the user back some data as a json response
-    fetch(ENDPOINT, {
-        headers: {
-          'Authorization': `Basic ${base64EncodedKey}`
-        }
-      })
-      .then(response => { 
-        if(!response.ok) {
-            throw new Error('Network response was not ok!');
-        }
-        return response.json()
+// Use the WakaTime routes defined in the 'routes' folder
+app.use('/api', wakatimeRoutes);
+
+// Endpoint to create a new project in the database
+app.post('/api/projects', (req, res) => {
+  const { projectName, hoursLogged } = req.body;
+
+  // Create a new Project instance based on the request body
+  const newProject = new Project({
+    projectName,
+    hoursLogged,
+    //other stuff
+  })
+
+  // Save the new project to the database
+  newProject.save()
+    .then(project => res.status(201).json({ message: 'Project created successfully!', project}))
+    .catch(error => {
+      console.error('Error saving project:', error);
+      res.status(500).json({ message: 'Internal Server Error' })
     })
-      .then(data => {
-        // send only data from inputted project
-        // maybe access via req.params?
-        res.json(data.data[0].projects)
-    })
-      .catch(error => {
-        console.error('Error fetching WakaTime data:', error)
-        res.status(500).json({ error: 'Failed to fetch WakaTime data' });
-    });
-});
+})
+
+// Middleware to handle 404 errors for undefined routes
+app.use((req, res) => res.status(404).send('That endpoint doesnt exist'));
+
+// Error handling middleware to catch any errors thrown in preceding middleware/functions
+app.use((err, req, res, next) => {
+    const defaultErr = {
+      log: 'Express error handler caught unknown middleware error',
+      status: 500,
+      message: { err: 'An error occurred' },
+    };
+    const errorObj = Object.assign({}, defaultErr, err);
+    console.log(errorObj.log);
+    return res.status(errorObj.status).json(errorObj.message);
+  });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Express server is running on http://localhost:${PORT}`);
 });

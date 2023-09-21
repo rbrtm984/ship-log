@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const DataForm = (props) => {
+
     return (
       <div>
+        {/* Input field for user to enter project name */}
         <input 
-          // className='album_id' 
-          required="required" 
-          placeholder="Project name" 
-          onChange={e => setId(e.target.value)}>  
+          required="required" // Makes sure user provides input
+          placeholder="Enter the project name" 
+          value={props.projectName} // Input's value is controlled via a prop
+          // Update the state in parent component with every change in the input field
+          onChange={e => props.setProjectName(e.target.value)}>
         </input>
-        <button type="submit" onClick={props.handleClick}>Get my project data!</button>
+        {/* Button to trigger the fetching of project data */}
+        <button type="submit" onClick={props.handleClick}>Get project data!</button>
       </div>
     );
 }
