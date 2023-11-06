@@ -1,7 +1,4 @@
 # waka-smith
 
-this app requires you have the WakaTime extension installed on VSCode
-
-when you open this app and input the name of one of your projects in the input field
-the app will mamke 
+This app is built with React, Express, SQL and CSS. It utilizes the WakaTime API to tell you how much time you spent coding a particular project on a given day. As such, it requires you to have the WakaTime Extension installed on your VSCode.
 
