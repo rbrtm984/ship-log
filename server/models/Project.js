@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fetch = require('node-fetch');
 
-const connectionString = 'mongodb+srv://rbrtm984:KQUTxwbDfeecHBv4@wakasmith.gntqnlc.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://rbrtm985:ENt3vgimsp6bGQhe@wakasmith.gntqnlc.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(connectionString, { 
     useNewUrlParser: true, 
@@ -23,6 +23,10 @@ const projectSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  minutesLogged: {
+    type: Number,
+    required: true
+  }
   // ... any other fields you need
 });
 
