@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/DataForm.css';
+import '../../styles/global.css';
 
 const DataForm = (props) => {
 
     return (
-      <div>
+      <form className="data-form">
+        <h1>Project Name:</h1>
         {/* Input field for user to enter project name */}
         <input 
+          id="projectName"
           required="required" // Makes sure user provides input
           placeholder="Enter the project name" 
           value={props.projectName} // Input's value is controlled via a prop
@@ -13,8 +17,9 @@ const DataForm = (props) => {
           onChange={e => props.setProjectName(e.target.value)}>
         </input>
         {/* Button to trigger the fetching of project data */}
-        <button type="submit" onClick={props.handleClick}>Get project data!</button>
-      </div>
+        <button type="submit" onClick={(e) => props.handleClick(e)}>Get project data!</button>
+      
+      </form>
     );
 }
 
