@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DataForm from './DataForm'
 import DataDisplay from './DataDisplay'
 // import project list component
-import ProjectList from './ProjectList'
+// import ProjectList from './ProjectList'
 import '../../styles/Data.css';
 import '../../styles/global.css';
 const fetch = require('node-fetch');
@@ -121,7 +121,7 @@ function Data() {
       <section id="data-container">
         <DataForm handleClick={handleClick} projectName={projectName} setProjectName={setProjectName}/>
         <DataDisplay data={data} />
-        <ProjectList projects={projects} setProjects={setProjects} />
+        {/* <ProjectList projects={projects} setProjects={setProjects} /> */}
       </section>
     );
   }
