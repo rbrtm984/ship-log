@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const cors = require('cors');
-const { Project } = require('./models/Project.js')
+// const { Project } = require('./models/Project.js')
 
 const wakatimeRoutes = require('./routes/api');
 

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const fetch = require('node-fetch');
 
-const connectionString = 'mongodb+srv://rbrtm985:ENt3vgimsp6bGQhe@wakasmith.gntqnlc.mongodb.net/?retryWrites=true&w=majority'
-
 mongoose.connect(connectionString, { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
