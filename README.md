@@ -1,12 +1,4 @@
 # waka-smith
 
-INSTALLATION/USAGE GUIDE
-
-1. Open VSCode.
-2. Navigate to extensions.
-3. Search for "WakaTime" and install.
-4. Create a WakaTime account on your browser (Chrome).
-5. Generate an API key in your WakaTime account settings.
-6. Paste that API key into "wakatimeController".
-7. Type in the name of a VSCode project to see your time spent coding that project today!
+This app is built with React, Express, SQL and CSS. It utilizes the WakaTime API to tell you how much time you spent coding a particular project on a given day. As such, it requires you to have the WakaTime Extension installed on your VSCode.
 
