@@ -65,6 +65,7 @@ module.exports = {
               secure: false,
             },
           },
+          stats: 'minimal',
     },
     // Where the bundled output will be saved
     output: {
