@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve the static frontend files from the 'client/dist' directory
-app.use(express.static('client/dist')); // Serve your frontend
+app.use(express.static('dist')); // Serve your frontend
 
 // Use the WakaTime routes defined in the 'routes' folder
 app.use('/api', wakatimeRoutes);

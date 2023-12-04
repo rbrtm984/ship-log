@@ -45,7 +45,7 @@ module.exports = {
         port: 8080,
         // Serve files from the specified directory
         static: {
-            directory: path.resolve(__dirname, 'client/dist'),
+            directory: path.resolve(__dirname, 'dist'),
             publicPath: '/'
         },
         // Hot-reloading: auto-refresh browser on changes
@@ -65,7 +65,6 @@ module.exports = {
               secure: false,
             },
           },
-          stats: 'minimal',
     },
     // Where the bundled output will be saved
     output: {
