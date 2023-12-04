@@ -27,84 +27,36 @@ app.use(express.static('client/dist')); // Serve your frontend
 // Use the WakaTime routes defined in the 'routes' folder
 app.use('/api', wakatimeRoutes);
 
-/*
-OLD ROUTES FOR MONGODB IMPLEMENTATION 
+// SQLite route for recording progress
+app.post('/api/progress', (req, res)=>{
+  const { userId, projectId, date, timeSpent } = req.body;
+  const sql = `INSERT INTO progress(user_id, project_id, date, time_spent) VALUES (?, ?, ?, ?)`;
 
-// Endpoint to create a new project in the database
-app.post('/api/projects', (req, res) => {
-  const { projectName, hoursLogged, minutesLogged } = req.body;
-
-  // Create a new Project instance based on the request body
-  const newProject = new Project({
-    projectName,
-    hoursLogged,
-    minutesLogged
-    //other stuff
+  db.run(sql, [userId, projectId, date, timeSpent], function(err){
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Error saving progress');
+      return;
+    }
+    res.status(201).json({ message: 'Progress saved successfully', id: this.lastID });
   })
-
-  // Save the new project to the database
-  newProject.save()
-    .then(project => res.status(201).json({ message: 'Project created successfully!', project}))
-    .catch(error => {
-      console.error('Error saving project:', error);
-      res.status(500).json({ message: 'Internal Server Error during POST request' })
-    })
 })
 
-app.get('/api/projects', async (req, res) => {
-  try {
-    const projects = await Project.find();
-    res.status(200).json(projects);
-  } catch (error) {
-    res.status(500).json({ message: "Internal Server Error during GET request" });
-  }
-})
-
-app.put('/api/projects/:id', async (req, res) => {
-  try {
-    console.log('req.body', req.body);
-    const { id } = req.params;
-    console.log('id', id);
-    const name = req.body.name;
-    const hours = req.body.hours;
-    const minutes = req.body.minutes;
-    const { projectName, hoursLogged, minutesLogged } = req.body;
-    console.log('projectName', name, 'hoursLogged', hours, 'minutesLogged', minutes);
-    const updatedProject = await Project.findOneAndUpdate(
-      { _id: id},
-      {
-        $set: {
-          projectName: name, 
-          hoursLogged: hours,
-          minutesLogged: minutes
-        }
-      },
-      { new: true }
-    );
-    console.log('updatedProject', updatedProject)
-    if (!updatedProject) {
-      return res.status(404).json({ message: 'Project not found' });
+// Route to fetch total time spent on each project per week
+app.get('/api/progress/weekly', (req, res)=>{
+  const sql = `SELECT project_id, strftime('%W', date) AS week, SUM(time_spent) AS total_time
+                    FROM progress
+                    GROUP BY project_id, week
+                    ORDER BY week`;
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Error fetching weekly progress');
+      return;
     }
-    res.status(200).json(updatedProject);
-  } catch (err) {
-    res.status(500).json({ message: "Internal Server Error during UPDATE request"})
-  }
+    res.status(200).json(rows);
+  })
 })
-
-// create a route to delete a project
-app.delete('/api/projects/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedProject = await Project.findOneAndDelete({ _id: id });
-    if (!deletedProject) {
-      return res.status(404).json({ message: 'Project not found' });
-    }
-    res.status(200).json(deletedProject);
-  } catch (err) {
-    res.status(500).json({ message: "Internal Server Error during DELETE request"})
-  }
-})
-*/
 
 // Middleware to handle 404 errors for undefined routes
 app.use((req, res) => res.status(404).send('That endpoint doesnt exist'));
