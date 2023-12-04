@@ -27,6 +27,9 @@ app.use(express.static('client/dist')); // Serve your frontend
 // Use the WakaTime routes defined in the 'routes' folder
 app.use('/api', wakatimeRoutes);
 
+/*
+OLD ROUTES FOR MONGODB IMPLEMENTATION 
+
 // Endpoint to create a new project in the database
 app.post('/api/projects', (req, res) => {
   const { projectName, hoursLogged, minutesLogged } = req.body;
@@ -101,6 +104,7 @@ app.delete('/api/projects/:id', async (req, res) => {
     res.status(500).json({ message: "Internal Server Error during DELETE request"})
   }
 })
+*/
 
 // Middleware to handle 404 errors for undefined routes
 app.use((req, res) => res.status(404).send('That endpoint doesnt exist'));
