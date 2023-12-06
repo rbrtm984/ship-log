@@ -3,8 +3,8 @@ import DataForm from './DataForm'
 import DataDisplay from './DataDisplay'
 // import project list component
 // import ProjectList from './ProjectList'
-import '../../styles/Data.css';
-import '../../styles/global.css';
+// import '../../styles/Data.css';
+// import '../../styles/global.css';
 const fetch = require('node-fetch');
 
 function Data() {

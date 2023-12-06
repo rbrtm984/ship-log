@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/DataForm.css';
-import '../../styles/global.css';
+// import '../../styles/DataForm.css';
+// import '../../styles/global.css';
 
 const DataForm = (props) => {
 

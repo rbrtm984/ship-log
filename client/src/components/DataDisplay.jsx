@@ -1,7 +1,7 @@
 import React from 'react';
 import LinePlot from './LinePlot'
-import '../../styles/Data.css';
-import '../../styles/global.css';
+// import '../../styles/Data.css';
+// import '../../styles/global.css';
 
 const DataDisplay = (props) => {
     // Temporary or dummy data for the line plot
