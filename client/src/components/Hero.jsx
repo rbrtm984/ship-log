@@ -7,10 +7,9 @@ export default () => {
 
     // Replace javascript:void(0) paths with your paths
     const navigation = [
-        { title: "Features", path: "javascript:void(0)" },
-        { title: "Integrations", path: "javascript:void(0)" },
-        { title: "Customers", path: "javascript:void(0)" },
-        { title: "Pricing", path: "javascript:void(0)" }
+        { title: "GitHub", path: "javascript:void(0)" },
+        { title: "Team", path: "javascript:void(0)" },
+        { title: "Account", path: "javascript:void(0)" },
     ]
 
     useEffect(() => {
@@ -25,9 +24,9 @@ export default () => {
         <div className="flex items-center justify-between py-5 md:block">
             <a href="javascript:void(0)">
                 <img
-                    src="https://www.floatui.com/logo-dark.svg"
-                    width={120}
-                    height={50}
+                    src="https://i.imgur.com/oxVvYnn.png"
+                    width={240}
+                    height={120}
                     alt="Float UI logo"
                 />
             </a>
@@ -73,14 +72,14 @@ export default () => {
                                         )
                                     })
                                 }
-                                <li>
+                                {/* <li>
                                     <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-full md:inline-flex">
                                         Get started
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                             <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                                         </svg>
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -90,12 +89,18 @@ export default () => {
                 <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl text-white font-extrabold mx-auto md:text-5xl">
-                            Build and scale up your startup with the best tools
+                            devTime
                         </h2>
                         <p className="max-w-2xl mx-auto text-gray-400">
-                            Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+                            See your time spent coding in a new way.
                         </p>
-                        <form
+                        {/* 
+                        Here is where the custom form will go, giving the user the option to select manual data entry or an auto WakaTime API query. 
+                        Either way, the data will be stored in the database and the user will be able to see their data in the dashboard.
+                        */}
+
+
+                        {/* <form
                             onSubmit={(e) => e.preventDefault()}
                             className="justify-center items-center gap-x-3 sm:flex">
                             <input
@@ -109,7 +114,9 @@ export default () => {
                                     <path fillRule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clipRule="evenodd" />
                                 </svg>
                             </button>
-                        </form>
+                        </form> */}
+
+                        {/** This is a rating form where people can rate it on the Google App store. */}
                         <div className="flex justify-center items-center gap-x-4 text-gray-400 text-sm">
                             <div className="flex">
                                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" /></svg>
