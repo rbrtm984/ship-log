@@ -24,10 +24,10 @@ export default () => {
         <div className="flex items-center justify-between py-5 md:block">
             <a href="javascript:void(0)">
                 <img
-                    src="https://i.imgur.com/oxVvYnn.png"
+                    src={ state ? 'https://i.imgur.com/HJ6auTd.png' : 'https://i.imgur.com/oxVvYnn.png'}
                     width={240}
                     height={120}
-                    alt="Float UI logo"
+                    alt="ship log logo"
                 />
             </a>
             <div className="md:hidden">
@@ -65,7 +65,7 @@ export default () => {
                                     navigation.map((item, idx) => {
                                         return (
                                             <li key={idx} className="text-gray-300 hover:text-gray-400">
-                                                <a href={item.path} className="block">
+                                                <a href={item.path} className="block ml-10">
                                                     {item.title}
                                                 </a>
                                             </li>
@@ -89,10 +89,13 @@ export default () => {
                 <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl text-white font-extrabold mx-auto md:text-5xl">
-                            devTime
+                            Building one day at a time.
                         </h2>
                         <p className="max-w-2xl mx-auto text-gray-400">
-                            See your time spent coding in a new way.
+                            A little time at the end of the day to update your log will help you stay on track.
+                        </p>
+                        <p className="max-w-2xl mx-auto text-gray-400">
+                            Log coding progress manually or connect your WakaTime account to automatically log.
                         </p>
                         {/* 
                         Here is where the custom form will go, giving the user the option to select manual data entry or an auto WakaTime API query. 

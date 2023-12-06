@@ -4,7 +4,7 @@ import '../styles/global.css'
 
 const App = () => {
   return (
-  <div id="mainContainer">
+  <div id="mainContainer" className="bg-gray-900">
     <Hero/>
   </div>
   );
