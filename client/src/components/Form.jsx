@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({ onFormData }) {
     const [projectName, setProjectName] = useState('');
     const [hoursWorked, setHoursWorked] = useState('');
     const [date, setDate] = useState('');
@@ -9,6 +9,14 @@ export default function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(projectName, hoursWorked, date);
+        const formData = {
+            label: date,
+            value: Number(hoursWorked) 
+        };
+        onFormData(formData);
+        // Reset form
+        setProjectName('');
+        setHoursWorked('');
     }
 
     return (
@@ -25,6 +33,8 @@ export default function Form() {
                 name="project-name"
                 id="project-name"
                 autoComplete="given-name"
+                value={projectName}
+                onChange={e => setProjectName(e.target.value)}
                 className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:col-span-2 sm:mt-0 sm:max-w-xs sm:text-sm sm:leading-6"
             />
             </div>
@@ -38,6 +48,8 @@ export default function Form() {
                 name="hours-worked"
                 id="hours-worked"
                 autoComplete="family-name"
+                value={hoursWorked}
+                onChange={e => setHoursWorked(e.target.value)}
                 className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:col-span-2 sm:mt-0 sm:max-w-xs sm:text-sm sm:leading-6"
             />
             </div>
@@ -51,6 +63,8 @@ export default function Form() {
                 name="date"
                 type="date"
                 autoComplete="email"
+                value={date}
+                onChange={e => setDate(e.target.value)}
                 className="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:col-span-2 sm:mt-0 sm:max-w-md sm:text-sm sm:leading-6"
             />
             </div>
