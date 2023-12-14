@@ -1,4 +1,13 @@
-# waka-smith
+# Ship Log
 
-This app is built with React, Express, SQL and CSS. It utilizes the WakaTime API to tell you how much time you spent coding a particular project on a given day. As such, it requires you to have the WakaTime Extension installed on your VSCode.
+Still working on this project.
 
+As of 12/14:
+- Clone the repo to your machine
+- Run npm install in the directory with package.json
+- Run npm run dev
+- Navigate to localhost:8080 to see the app
+
+Frontend: HTML, CSS, React, TailwindCSS, Webpack, PostCSS
+Backend: Node.js, Express.js, SQLite, WakaTime
+Other: Jest, VSCode, git
