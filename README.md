@@ -8,6 +8,12 @@ As of 12/14:
 - Run npm run dev
 - Navigate to localhost:8080 to see the app
 
-Frontend: HTML, CSS, React, TailwindCSS, Webpack, PostCSS
+To do:
+- Finish linking form to Chart.js graph
+- Finish documentation regarding WakaTime Extension
+- Deploy to AWS
+- Launch (Medium, LinkedIn, Slack)
+
+Frontend: HTML, CSS, React, TailwindCSS, Webpack, PostCSS, Chart.js
 Backend: Node.js, Express.js, SQLite, WakaTime
 Other: Jest, VSCode, git
