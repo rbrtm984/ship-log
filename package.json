@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server/server.js",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server --hot --progress --color",
@@ -26,6 +26,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^23.0.1",
     "postcss-loader": "^7.3.3",
     "style-loader": "^3.3.3",
     "supertest": "^6.3.3",
