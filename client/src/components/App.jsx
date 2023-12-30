@@ -6,9 +6,15 @@ import BarChart from './Bar';
 import '../styles/global.css'
 
 const App = () => {
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState({
+    Monday: [], Tuesday: [], Wednesday: [], Thursday: [], Friday: [], Saturday: [], Sunday: []
+  });
   const handleFormData = (data) => {
-    setChartData(prevData => [...prevData, data]);
+    const dayOfWeek = new Date(data.date).toLocaleString('en-US', { weekday: 'long' });
+    setChartData(prevData => ({
+      ...prevData,
+      [dayOfWeek]: [...prevData[dayOfWeek], { projectName: data.projectName, hoursWorked: data.hoursWorked }]
+    }));
   }
 
   return (

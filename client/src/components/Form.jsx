@@ -9,14 +9,11 @@ export default function Form({ onFormData }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(projectName, hoursWorked, date);
-        const formData = {
-            label: date,
-            value: Number(hoursWorked) 
-        };
-        onFormData(formData);
+        onFormData({ projectName, hoursWorked, date });
         // Reset form
         setProjectName('');
         setHoursWorked('');
+        setDate('');
     }
 
     return (

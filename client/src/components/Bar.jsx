@@ -7,26 +7,21 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
 const BarChart = ({ chartData }) => {
-    // chartData = [
-    //     { label: 'Monday', value: 8 },
-    //     { label: 'Tuesday', value: 6 },
-    //     { label: 'Wednesday', value: 7 },
-    //     { label: 'Thursday', value: 9 },
-    //     { label: 'Friday', value: 5 },
-    //     { label: 'Saturday', value: 10 },
-    //     { label: 'Sunday', value: 8 },
-    //     ];
-  // Define the chart's data and configuration
+  const dataForChart = Object.entries(chartData).map(([day, projects]) => {
+    const totalHours = projects.reduce((acc, project) => acc + project.hoursWorked, 0);
+    return { day, totalHours };
+  });
+
   const data = {
-    labels: chartData.map(d => d.label),
-    datasets: [
-      {
-        label: 'Hours Worked',
-        data: chartData.map(d => d.value),
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-      },
-    ],
-};
+    labels: dataForChart.map(entry => entry.day),
+    datasets: [{
+      label: 'Hours Worked',
+      data: dataForChart.map(entry => entry.totalHours),
+      backgroundColor: 'rgba(135, 206, 250, 0.6)', // Lighter blue with some transparency
+      borderColor: 'rgba(135, 206, 250, 1)', // More solid border color
+      borderWidth: 1
+    }]
+  };
 
   return <Bar data={data} />;
 };
